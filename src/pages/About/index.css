@@ -1,0 +1,13 @@
+@media (min-width: 280px) and (max-width: 455px) and (min-height: 653px) {
+  p.mb-6.w-\[460px\].text-2xl.text-\[\#7D7E82\].max-md\:w-4\/5 {
+    width: 100%;
+  }
+  .img {
+    margin-top: -6rem;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .flex.justify-around.p-8.max-lg\:block {
+    gap: 2rem;
+  }
+}
