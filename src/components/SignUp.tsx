@@ -5,7 +5,14 @@ import useAuth from "../hooks/useAuth";
 
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEye,
+  faEyeSlash,
+  faUser,
+  faEnvelope,
+  faPhone,
+  faLock,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface SignupFormData {
   name: string;
@@ -55,7 +62,7 @@ const SignupPage = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto">
       {authorized ? (
         <div>
           <p>You are already signed up.</p>
@@ -88,80 +95,98 @@ const SignupPage = () => {
             })}
             onSubmit={(values) => handleSignup(values)}
           >
-            <Form>
-              <div className="mb-4">
+            <Form className="mt-[33px]">
+              <div className="relative mb-4">
                 <label
                   htmlFor="name"
-                  className="mb-1 block text-start text-[1.4rem] text-[#1D1D35]"
+                  className="mb-1 block text-start text-[1rem] text-[#1D1D35]"
                 >
                   الاسم
                 </label>
+                <div className="absolute mr-[0.6rem] mt-[0.5rem] rounded-r p-2">
+                  <FontAwesomeIcon icon={faUser} className=" text-[#c4c6ca]" />
+                </div>
                 <Field
                   type="text"
                   id="name"
                   name="name"
-                  className="w-full rounded border p-2"
+                  className="h-14 w-full rounded-xl border-2 border-[#F2F2F2] p-2 px-[0.5rem] pr-10 text-base outline-none placeholder:text-[#CCD2E3]"
                   placeholder="ادخل الاسم"
                 />
                 <ErrorMessage
                   name="name"
                   component="div"
-                  className="text-red-500"
+                  className="flex justify-start text-red-500 max-lg:text-sm"
                 />
               </div>
-              <div className="mb-4">
+              <div className="relative mb-4">
                 <label
                   htmlFor="email"
-                  className="mb-1 block text-start text-[1.4rem] text-[#1D1D35]"
+                  className="mb-1 block text-start text-[1rem] text-[#1D1D35]"
                 >
                   الايميل
                 </label>
+                <div className="absolute mr-[0.6rem] mt-[0.5rem] rounded-r p-2">
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    className=" text-[#b0bcd3]"
+                  />
+                </div>
                 <Field
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full rounded border p-2"
+                  className="h-14 w-full rounded-xl border-2 border-[#F2F2F2] p-2 pr-10 text-base outline-none placeholder:text-[#CCD2E3]"
                   placeholder="ادخل الايميل"
                 />
                 <ErrorMessage
                   name="email"
                   component="div"
-                  className="text-red-500"
+                  className="flex justify-start text-red-500 max-lg:text-sm"
                 />
               </div>
-              <div className="mb-4">
+              <div className="relative mb-4">
                 <label
                   htmlFor="phoneNumber"
-                  className="mb-1 block text-start text-[1.4rem] text-[#1D1D35]"
+                  className="mb-1 block text-start text-[1rem] text-[#1D1D35]"
                 >
                   رقم الجوال
                 </label>
+                <div className="absolute mr-[0.6rem] mt-[0.5rem] rounded-r p-2">
+                  <FontAwesomeIcon icon={faPhone} className=" text-[#c4c6ca]" />
+                </div>
                 <Field
                   type="text"
                   id="phoneNumber"
                   name="phoneNumber"
-                  className="w-full rounded border p-2"
+                  className="h-14 w-full rounded-xl border-2 border-[#F2F2F2] p-2 pr-10 text-base outline-none placeholder:text-[#CCD2E3]"
                   placeholder="رقم الجوال"
                 />
                 <ErrorMessage
                   name="phoneNumber"
                   component="div"
-                  className="text-red-500"
+                  className="flex justify-start text-red-500 max-lg:text-sm"
                 />
               </div>
               <div className="relative mb-4">
                 <label
                   htmlFor="password"
-                  className="mb-1 block text-start text-[1.4rem] text-[#1D1D35]"
+                  className="mb-1 block text-start text-[1rem] text-[#1D1D35]"
                 >
                   كلمة المرور
                 </label>
-                <div className="flex items-center rounded border">
+                <div className="flex items-center rounded-xl border-2 border-[#F2F2F2]">
+                  <div className="absolute mr-[0.6rem] mt-[0.1rem] p-2">
+                    <FontAwesomeIcon
+                      icon={faLock}
+                      className=" text-[#c4c6ca]"
+                    />
+                  </div>
                   <Field
                     type={showPassword ? "text" : "password"}
                     id="password"
                     name="password"
-                    className="w-full rounded-r border-none p-2"
+                    className="h-14 w-full rounded-r-xl p-2 pr-10 text-base outline-none placeholder:text-[#CCD2E3]"
                     placeholder="ادخل كلمة المرور"
                     autoComplete="off"
                   />
@@ -170,21 +195,21 @@ const SignupPage = () => {
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     <FontAwesomeIcon
-                      icon={showPassword ? faEyeSlash : faEye}
-                      className="text-[#a3a5a8]"
+                      icon={showPassword ? faEye : faEyeSlash}
+                      className="text-[#c4c6ca]"
                     />
                   </div>
                 </div>
                 <ErrorMessage
                   name="password"
                   component="div"
-                  className="text-red-500"
+                  className="flex justify-start text-red-500 max-lg:text-sm"
                 />
               </div>
               <div className="flex justify-center">
                 <button
                   type="submit"
-                  className="mt-8 h-14 w-96 rounded-full bg-blue-500 px-4 py-2 text-lg text-white"
+                  className="mt-8 h-14 w-96 rounded-full bg-[#00ADEE] px-4 py-2 text-base text-white"
                   disabled={loading}
                 >
                   {loading ? "انشاء حساب..." : "انشاء حساب"}

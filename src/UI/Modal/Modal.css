@@ -2,24 +2,34 @@
   .max-w-md {
     max-width: 90vw;
     height: auto;
-    /* min-height: 90vh; */
-  }
-  button.active.\"bg-white.border-b-4\".\}.border-white.px-12.py-2.text-gray-500 {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  button.\"bg-white.border-b-4\".\}.border-white.px-12.py-2.text-gray-500 {
-    padding-left: 0;
-    padding-right: 0;
+    margin-top: 10px;
   }
   h2.mr-5.text-2xl {
     font-size: 0.8rem;
   }
-  button.mt-8.h-14.w-96.rounded-full.bg-blue-500.px-4.py-2.text-white {
-    margin-top: 0;
-    height: 2.5rem;
-  }
   button.mt-8.h-14.w-\[22\.5rem\].rounded-full.bg-blue-500.px-4.py-2.text-white {
     width: 10.5rem;
+  }
+  .z-50.mx-4.w-full.max-w-md.rounded-lg.bg-white.px-\[50px\].py-7.md\:mx-auto {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  h2.mr-5.text-\[1\.3rem\] {
+    font-size: 0.6px;
+  }
+  button.relative.border-b-4.border-white.bg-white.px-4.py-2.text-\[20px\].text-gray-500.active {
+    font-size: 14px;
+  }
+  button.relative.border-b-4.border-white.bg-white.px-4.py-2.text-\[20px\].text-gray-500 {
+    font-size: 14px;
+  }
+  .relative.mt-\[34px\].flex.items-center.justify-around.border-b-2.text-xl.text-\[\#7D7E82\] {
+    margin-top: 10px;
+  }
+  form.mt-\[33px\] {
+    margin-top: 15px;
+  }
+  button.mt-8.h-14.w-96.rounded-full.bg-\[\#00ADEE\].px-4.py-2.text-base.text-white {
+    margin-top: 0;
   }
 }

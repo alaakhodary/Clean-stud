@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import Button from "../components/Button";
-import Taps from "../components/Taps";
+import "./style.css";
 
-import Modal from "./Modal/Modal";
+import Button from "../../components/Button";
+import Taps from "../../components/Taps";
 
-import logo from "../assest/logo.svg";
+import Modal from "../Modal/Modal";
+
+import logo from "../../assest/logo.svg";
 
 interface NavigationLink {
+  id: number;
   label: string;
   href: string;
 }
@@ -16,6 +19,11 @@ interface NavigationLink {
 const Header: React.FC = () => {
   const [showContent, setShowContent] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState<number | null>(null);
+
+  const handleActive = (itemId: number) => {
+    setActiveItem(itemId === activeItem ? null : itemId);
+  };
 
   const openModal = () => {
     setIsOpen(true);
@@ -30,10 +38,10 @@ const Header: React.FC = () => {
   };
 
   const navigationLinks: NavigationLink[] = [
-    { label: "الرئيسية", href: "/" },
-    { label: "الخدمات", href: "/service" },
-    { label: "من نحن", href: "/about" },
-    { label: "اتصل بنا", href: "/contact-us" },
+    { id: 1, label: "الرئيسية", href: "/" },
+    { id: 2, label: "الخدمات", href: "/service" },
+    { id: 3, label: "من نحن", href: "/about" },
+    { id: 4, label: "اتصل بنا", href: "/contact-us" },
   ];
 
   return (
@@ -62,11 +70,15 @@ const Header: React.FC = () => {
         </div>
         <div>
           <nav className="hidden items-center text-xl font-semibold lg:flex">
-            <ul className="flex">
-              {navigationLinks.map((link) => (
-                <li className="mr-16" key={link.label}>
-                  <NavLink to={link.href} className="hover:text-co-4">
-                    {link.label}
+            <ul className="item flex">
+              {navigationLinks.map((item) => (
+                <li className="mr-16" key={item.id}>
+                  <NavLink
+                    to={item.href}
+                    className={`${activeItem === item.id ? "active" : ""}`}
+                    onClick={() => handleActive(item.id)}
+                  >
+                    {item.label}
                   </NavLink>
                 </li>
               ))}
@@ -94,7 +106,7 @@ const Header: React.FC = () => {
                   />
                 </svg>
               </button>
-              <h2 className="mr-5 text-2xl">
+              <h2 className="mr-4 text-[18px] font-semibold">
                 من فضلك قم بتسجيل الدخول للاستمرار
               </h2>
             </div>
@@ -104,11 +116,15 @@ const Header: React.FC = () => {
       </div>
       {showContent && (
         <div className="px-4 py-2 lg:hidden">
-          <ul className="flex flex-col text-center text-xl">
-            {navigationLinks.map((link) => (
-              <li className="border-b-2 p-2 lg:border-none" key={link.label}>
-                <NavLink to={link.href} className="hover:text-co-4">
-                  {link.label}
+          <ul className="item flex flex-col text-center text-xl font-semibold">
+            {navigationLinks.map((item) => (
+              <li className="border-b-2 p-2 lg:border-none" key={item.id}>
+                <NavLink
+                  to={item.href}
+                  className={`${activeItem === item.id ? "active" : ""}`}
+                  onClick={() => handleActive(item.id)}
+                >
+                  {item.label}
                 </NavLink>
               </li>
             ))}
@@ -138,7 +154,7 @@ const Header: React.FC = () => {
                         />
                       </svg>
                     </button>
-                    <h2 className="mr-5 text-2xl">
+                    <h2 className="mr-5 text-[1.1rem]">
                       من فضلك قم بتسجيل الدخول للاستمرار
                     </h2>
                   </div>

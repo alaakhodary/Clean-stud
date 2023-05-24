@@ -1,0 +1,5 @@
+@media (min-width: 280px) and (max-width: 380px) {
+  p.w-\[100\%\].text-center.text-\[1\.60rem\].text-black {
+    font-size: 1.5rem;
+  }
+}

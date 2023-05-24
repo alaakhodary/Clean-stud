@@ -1,0 +1,5 @@
+@media (min-width: 280px) and (max-width: 400px) {
+  h2.mr-44.py-8.text-2xl.font-bold.text-co-17.max-sm\:mr-36 {
+    font-size: 1.3rem;
+  }
+}

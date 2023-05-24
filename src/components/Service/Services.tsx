@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
-import { products as mockService } from "../mock/Service";
+import { products as mockService } from "../../mock/Service";
+
+import "./style.css";
 
 const Services: React.FC = () => {
   return (
@@ -18,10 +20,12 @@ const Services: React.FC = () => {
             <h2 className="mr-44 py-8 text-2xl font-bold text-co-17 max-sm:mr-36">
               {service.title}
             </h2>
-            <p className="mb-4 mr-8 w-[15rem] border-r-2 border-[#8FC930] pr-4 text-lg text-co-18">
-              {service.description}
-            </p>
-            <div className="mr-8 flex items-center">
+            <div className="px-6">
+              <p className="mb-4 w-full border-r-2 border-[#8FC930] pr-4 text-lg text-co-18">
+                {service.description}
+              </p>
+            </div>
+            <div className="flex items-center px-6">
               <Link
                 to={service.link}
                 className="text-lg text-[#00ADEE] hover:border-b-2 hover:border-[#00ADEE]"

@@ -1,0 +1,5 @@
+@media (min-width: 280px) and (max-width: 400px) {
+  button.flex.items-center.gap-1.bg-white.px-4.text-xl {
+    font-size: 1.1rem;
+  }
+}

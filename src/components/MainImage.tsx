@@ -12,13 +12,13 @@ const MainImage = (props: IPropImg) => {
         <img src={img} alt="Img" className="m-auto w-full object-cover" />
         <div className="absolute right-0 top-0 h-full w-2/4 rounded-3xl">
           <div className="inside-img w-full max-md:p-[1.5rem] md:mx-8 md:my-16 lg:mx-20 lg:my-28">
-            <h1 className="mb-3 w-64 text-4xl leading-[3.5rem] max-sm:w-40 max-sm:text-xl lg:w-[25rem] lg:text-[4.25rem] lg:leading-[4rem]">
+            <h1 className="mb-3 w-[23rem] text-5xl leading-[3.5rem] max-sm:w-40 max-sm:text-xl md:w-[24rem] md:text-[50px] md:leading-[4rem]">
               {props.text}
             </h1>
-            <p className="max-xs:mb-0 mb-6 w-[15rem] text-2xl text-[#7D7E82] max-sm:w-44 max-sm:text-sm lg:mt-6 lg:w-[21rem] lg:text-[2rem]">
+            <p className="max-xs:mb-0 mb-6 w-[18rem] text-2xl text-[#7D7E82] max-sm:w-44 max-sm:text-sm md:w-[22rem] md:text-3xl lg:mt-6">
               {props.subText}
             </p>
-            <button className="h-12 w-[150px] rounded-full border bg-white p-2 text-[1.59rem] text-xl max-sm:w-36 max-sm:text-sm lg:h-16 lg:w-[170px]">
+            <button className="h-12 w-[150px] rounded-full border bg-white p-2 text-[1.59rem] text-xl max-sm:w-36 max-sm:text-sm">
               تواصل معنا
             </button>
           </div>
@@ -29,16 +29,3 @@ const MainImage = (props: IPropImg) => {
 };
 
 export default MainImage;
-
-/* <img src={img} alt="Img" className="m-auto w-full object-cover" />
-        <div className="absolute right-52 top-20 max-sm:right-4 max-sm:top-4 max-sm:w-48 max-sm:p-3 max-sm:text-xl sm:right-5 sm:top-4 lg:right-9 lg:top-10 xl:right-20 xl:top-10 2xl:right-56 2xl:top-10">
-          <h1 className="mb-3 w-64 text-4xl leading-[3.5rem] max-sm:w-40 max-sm:text-xl">
-            {props.text}
-          </h1>
-          <p className="max-xs:mb-0 mb-6 w-[15rem] text-2xl text-[#7D7E82] max-sm:w-44 max-sm:text-sm">
-            {props.subText}
-          </p>
-          <button className="h-12 w-[150px] rounded-full border bg-white p-2 text-xl max-sm:w-36 max-sm:text-sm">
-            تواصل معنا
-          </button>
-        </div> */

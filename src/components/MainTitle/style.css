@@ -1,0 +1,5 @@
+@media (min-width: 280px) and (max-width: 400px) {
+  h1.ml-2.mr-2.mt-\[-4px\].text-\[40px\].font-semibold.max-md\:text-3xl {
+    font-size: 1.5rem;
+  }
+}

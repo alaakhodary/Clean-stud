@@ -1,14 +1,17 @@
 import { Fragment, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import Header from "../UI/Header";
-import Footer from "../UI/Footer";
+import "./style.css";
 
-import Button from "../components/Button";
+import Header from "../../UI/Header/Header";
+import Footer from "../../UI/Footer";
 
-import woman from "../assest/imgWoman.svg";
-import imgLeft from "../assest/imgTitleLeft.svg";
+import Button from "../../components/Button";
 
-import { serviceAvailabel as mockserviceAvailabel } from "../mock/ServiceAvailableType";
+import woman from "../../assest/imgWoman.svg";
+import imgLeft from "../../assest/imgTitleLeft.svg";
+
+import { serviceAvailabel as mockserviceAvailabel } from "../../mock/ServiceAvailableType";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
@@ -24,6 +27,11 @@ const Service = () => {
   const visibleData = showPartialData
     ? mockserviceAvailabel.slice(0, partialDataCount)
     : mockserviceAvailabel;
+
+  const navigate = useNavigate();
+  const goToBook = () => {
+    navigate("/book-now");
+  };
 
   return (
     <Fragment>
@@ -43,7 +51,11 @@ const Service = () => {
               العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي
               أخطاء لغوية
             </p>
-            <Button text="احجز الآن" variant="secondary" />
+            <Button
+              text="احجز الآن"
+              variant="secondary"
+              onClick={() => goToBook()}
+            />
           </div>
           <div className="mt-6">
             <img
@@ -81,7 +93,7 @@ const Service = () => {
         </ul>
         <div className="relative mt-8">
           <hr />
-          <div className="absolute right-[50%] top-[-0.9rem] flex items-center max-sm:right-[36.9%]">
+          <div className="absolute right-[50%] top-[-0.9rem] flex translate-x-[50%] items-center">
             <button
               onClick={toggleData}
               className="flex items-center gap-1 bg-white px-4 text-xl"

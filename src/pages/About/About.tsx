@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 
-import Header from "../../UI/Header";
+import Header from "../../UI/Header/Header";
 import Button from "../../components/Button";
 import Footer from "../../UI/Footer";
 
-import "./index.css";
+import "./style.css";
 
 import woman from "../../assest/imgWoman.svg";
 import imgLeft from "../../assest/imgTitleLeft.svg";

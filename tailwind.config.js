@@ -32,11 +32,12 @@ export const theme = {
       },
     },
     fontFamily: {
-      body: "Open Sans",
+      primary: "Avenir Arabic",
     },
     boxShadow: {
       shadowPrimary: "0px 8px 24px rgba(0, 173, 238, 0.1);",
     },
+    hover: ["none"],
   },
 };
 export const plugins = [];

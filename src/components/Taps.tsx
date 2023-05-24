@@ -31,8 +31,8 @@ const Taps: React.FC = () => {
   };
 
   return (
-    <div className="p-[0.6rem]">
-      <div className="relative mt-4 flex items-center justify-around border-b-2 text-xl text-[#7D7E82]">
+    <>
+      <div className="relative mt-[34px] flex items-center justify-around border-b-2 text-xl text-[#7D7E82]">
         <div className="absolute right-[50%]">
           <img src={line} alt="lineImg" />
         </div>
@@ -40,9 +40,11 @@ const Taps: React.FC = () => {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              className={`${activeTab === tab.id ? "active" : ""}
-             "bg-white border-b-4" }
-            border-white px-12 py-2 text-gray-500`}
+              className={`relative border-b-4 border-white bg-white px-4
+            py-2 text-[20px] text-gray-500  ${
+              activeTab === tab.id ? "active" : ""
+            }
+            `}
               onClick={() => handleTabClick(tab.id)}
             >
               {tab.label}
@@ -51,7 +53,7 @@ const Taps: React.FC = () => {
         </div>
       </div>
       <div className="mt-4">{tabs[activeTab].component}</div>
-    </div>
+    </>
   );
 };
 

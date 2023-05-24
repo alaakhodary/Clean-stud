@@ -2,7 +2,7 @@ import woman from "../assest/imgWoman.svg";
 import imgLeft from "../assest/imgTitleLeft.svg";
 
 import Footer from "../UI/Footer";
-import Header from "../UI/Header";
+import Header from "../UI/Header/Header";
 
 import ContactForm from "../components/ContactForm";
 

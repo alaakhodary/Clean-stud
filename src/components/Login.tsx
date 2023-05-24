@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 
 interface LoginFormValues {
   email: string;
@@ -49,7 +50,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto">
       {authorized ? (
         <div>
           <p>You are already logged in.</p>
@@ -76,39 +77,51 @@ const LoginPage = () => {
             onSubmit={(values) => handleLogin(values)}
           >
             <Form>
-              <div className="mb-4">
+              <div className="relative mb-4">
                 <label
                   htmlFor="email"
-                  className="mb-1 block text-start text-[1.4rem] text-[#1D1D35]"
+                  className="mb-1 block text-start text-[1rem] text-[#1D1D35]"
                 >
                   الايميل
                 </label>
+                <div className="absolute mr-[0.6rem] mt-[0.4rem] rounded-r p-2">
+                  <FontAwesomeIcon
+                    icon={faEnvelope}
+                    className=" text-[#c4c6ca]"
+                  />
+                </div>
                 <Field
                   type="email"
                   id="email"
                   name="email"
-                  className="w-full rounded border p-2"
+                  className="h-[50px] w-full rounded-xl border-2 border-[#F2F2F2] p-2 pr-10 text-base outline-none placeholder:text-[#CCD2E3]"
                   placeholder="ادخل الايميل"
                 />
                 <ErrorMessage
                   name="email"
                   component="div"
-                  className="text-red-500"
+                  className="flex justify-start text-red-500 max-lg:text-sm"
                 />
               </div>
               <div className="relative mb-4">
                 <label
                   htmlFor="password"
-                  className="mb-1 block text-start text-[1.4rem] text-[#1D1D35]"
+                  className="mb-1 block text-start text-[1rem] text-[#1D1D35]"
                 >
                   كلمة المرور
                 </label>
-                <div className="flex items-center rounded border">
+                <div className="flex items-center rounded-xl border-2 border-[#F2F2F2]">
+                  <div className="absolute mr-[0.6rem] mt-[0.1rem] rounded-r p-2">
+                    <FontAwesomeIcon
+                      icon={faLock}
+                      className=" text-[#c4c6ca]"
+                    />
+                  </div>
                   <Field
                     type={showPassword ? "text" : "password"}
                     id="password"
                     name="password"
-                    className="w-full rounded-r border-none p-2"
+                    className="h-14 w-full rounded-r-xl p-2 pr-10 text-base outline-none placeholder:text-[#CCD2E3]"
                     placeholder="ادخل كلمة المرور"
                     autoComplete="off"
                   />
@@ -117,21 +130,21 @@ const LoginPage = () => {
                     onClick={() => setShowPassword(!showPassword)}
                   >
                     <FontAwesomeIcon
-                      icon={showPassword ? faEyeSlash : faEye}
-                      className="text-[#a3a5a8]"
+                      icon={showPassword ? faEye : faEyeSlash}
+                      className="text-[#c4c6ca]"
                     />
                   </div>
                 </div>
                 <ErrorMessage
                   name="password"
                   component="div"
-                  className="text-red-500"
+                  className="flex justify-start text-red-500 max-lg:text-sm"
                 />
               </div>
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-8 h-14 w-[22.5rem] rounded-full bg-blue-500 px-4 py-2 text-lg text-white"
+                className="mt-8 h-14 w-full rounded-full bg-[#00ADEE] px-4 py-2 text-lg text-white"
               >
                 {loading ? "دخول..." : "دخول"}
               </button>

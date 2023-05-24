@@ -1,8 +1,8 @@
-import Router from "./router";
+import Router from "./router/router";
 
 function App() {
   return (
-    <div className="container mx-auto mt-6">
+    <div className="container mx-auto mt-6 font-primary">
       <Router />
     </div>
   );

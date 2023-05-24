@@ -9,7 +9,7 @@ const WhyChooseUs = () => {
       <div className="flex items-center">
         <img src={imgClean} alt="personClean" className="w-full rounded-3xl " />
       </div>
-      <div className="grid gap-8 md:gap-0">
+      <div className="m-auto mx-0 grid h-[85%] gap-8 max-lg:h-full md:gap-0">
         <Advantages
           img={imgAdvantge}
           title="الموثقية"

@@ -1,12 +1,12 @@
 import { Fragment } from "react";
 
-import Header from "../UI/Header";
+import Header from "../UI/Header/Header";
 import Footer from "../UI/Footer";
 
-import CustomerReviews from "../components/CustomerReviews";
+import CustomerReviews from "../components/CustomerReviews/CustomerReviews";
 import MainImage from "../components/MainImage";
-import MainTitle from "../components/MainTitle";
-import Services from "../components/Services";
+import MainTitle from "../components/MainTitle/MainTitle";
+import Services from "../components/Service/Services";
 import WhyChooseUs from "../components/WhyChooseUs";
 
 import clientImg from "../assest/client.svg";
