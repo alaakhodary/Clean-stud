@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./style.css";
 
 import Button from "../../components/Button";
+
 import Taps from "../Modal/components/Taps";
 
 import Modal from "../Modal/Modal";

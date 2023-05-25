@@ -1,15 +1,12 @@
 import woman from "../../assest/imgWoman.svg";
 import imgLeft from "../../assest/imgTitleLeft.svg";
 
-import Footer from "../../UI/Footer";
-import Header from "../../UI/Header/Header";
-
 import ContactForm from "./components/ContactForm";
+import Layout from "../../components/Layout";
 
 const ContactUs = () => {
   return (
-    <div>
-      <Header />
+    <Layout>
       <section className="px-2 py-12">
         <div className="grid gap-8 sm:grid-cols-1 lg:grid-cols-2">
           <div className="w-full py-4 sm:mb-[1.5rem] xl:mt-16">
@@ -28,8 +25,7 @@ const ContactUs = () => {
           </div>
         </div>
       </section>
-      <Footer />
-    </div>
+    </Layout>
   );
 };
 

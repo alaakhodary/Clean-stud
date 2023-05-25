@@ -1,10 +1,7 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./style.css";
-
-import Header from "../../UI/Header/Header";
-import Footer from "../../UI/Footer";
 
 import Button from "../../components/Button";
 
@@ -15,6 +12,7 @@ import { serviceAvailabel as mockserviceAvailabel } from "../../mock/ServiceAvai
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
+import Layout from "../../components/Layout";
 
 const Service = () => {
   const partialDataCount = 8; // Number of service to show initially
@@ -34,8 +32,7 @@ const Service = () => {
   };
 
   return (
-    <Fragment>
-      <Header />
+    <Layout>
       <section className="px-2 py-12">
         <div className="grid sm:grid-cols-1 md:grid-cols-2">
           <div className="w-[90%] sm:mb-[1.5rem] md:mt-8 xl:mt-20">
@@ -113,8 +110,7 @@ const Service = () => {
           </div>
         </div>
       </section>
-      <Footer />
-    </Fragment>
+    </Layout>
   );
 };
 
