@@ -5,6 +5,7 @@ import "./style.css";
 
 import Button from "../../components/Button";
 import Taps from "../../components/Taps";
+import {EnteringInfo} from "../../components";
 
 import Modal from "../Modal/Modal";
 
@@ -46,6 +47,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="text-base text-black">
+      <EnteringInfo />
       <div className="flex items-center justify-between px-2 py-2">
         <div className="flex items-center justify-between max-lg:w-full">
           <div>
@@ -61,7 +63,7 @@ const Header: React.FC = () => {
               xmlns="http://www.w3.org/2000/svg"
             >
               {showContent ? (
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+                <path d={showContent?"M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"} />
               ) : (
                 <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
               )}

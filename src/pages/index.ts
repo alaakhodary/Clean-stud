@@ -1,0 +1,5 @@
+export {default Home} from "./Home"
+export {default ContactUS} from "./ContactUS"
+export {default Service} from "./Service"
+export {default BookNow} from "./BookNow"
+export {default About} from "./About"

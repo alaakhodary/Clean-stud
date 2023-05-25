@@ -1,12 +1,7 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Home from "../pages/Home";
-import Service from "../pages/Service/Service";
-import About from "../pages/About/About";
-import ContactUs from "../pages/ContactUs";
-import BookNow from "../pages/BookNow";
-
+import {Home, Service, About, ContactUs, BookNow} from "../pages";
 import Loading from "../components/Loading";
 
 const Router: React.FC = () => {
