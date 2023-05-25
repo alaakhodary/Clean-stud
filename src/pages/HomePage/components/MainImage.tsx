@@ -1,4 +1,4 @@
-import img from "../assest/img1.svg";
+import img from "../../../assest/img1.svg";
 
 interface IPropImg {
   text: string;

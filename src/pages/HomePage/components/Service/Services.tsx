@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { products as mockService } from "../../mock/Service";
+import { products as mockService } from "../../../../mock/Service";
 
 import "./style.css";
 

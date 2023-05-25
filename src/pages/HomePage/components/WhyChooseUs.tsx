@@ -1,7 +1,7 @@
 import Advantages from "./Advantages";
 
-import imgClean from "../assest/personCleaning.svg";
-import imgAdvantge from "../assest/advantges.svg";
+import imgClean from "../../../assest/personCleaning.svg";
+import imgAdvantge from "../../../assest/advantges.svg";
 
 const WhyChooseUs = () => {
   return (

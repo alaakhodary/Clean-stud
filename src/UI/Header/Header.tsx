@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./style.css";
 
 import Button from "../../components/Button";
-import Taps from "../../components/Taps";
+import Taps from "../Modal/components/Taps";
 
 import Modal from "../Modal/Modal";
 
@@ -60,11 +60,13 @@ const Header: React.FC = () => {
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              {showContent ? (
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-              ) : (
-                <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
-              )}
+              <path
+                d={
+                  showContent
+                    ? "M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+                    : "M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"
+                }
+              />
             </svg>
           </button>
         </div>

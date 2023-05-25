@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 
-import { options as mockOptionData } from "../mock/OptionData";
+import { options as mockOptionData } from "../../../mock/OptionData";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

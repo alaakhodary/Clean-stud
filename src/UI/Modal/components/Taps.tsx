@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import line from "../assest/Line.svg";
+import line from "../../../assest/Line.svg";
 import Login from "./Login";
 import SignUp from "./SignUp";
 

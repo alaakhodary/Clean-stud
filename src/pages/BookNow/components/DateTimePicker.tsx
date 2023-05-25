@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import calender from "../assest/Date_range_duotone.svg";
+import calender from "../../../assest/Date_range_duotone.svg";
 
 const DateTimePicker: React.FC = () => {
   const [selectedDateTime, setSelectedDateTime] = useState("");

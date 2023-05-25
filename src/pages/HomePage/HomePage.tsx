@@ -1,17 +1,17 @@
 import { Fragment } from "react";
 
-import Header from "../UI/Header/Header";
-import Footer from "../UI/Footer";
+import Header from "../../UI/Header/Header";
+import Footer from "../../UI/Footer";
 
-import CustomerReviews from "../components/CustomerReviews/CustomerReviews";
-import MainImage from "../components/MainImage";
-import MainTitle from "../components/MainTitle/MainTitle";
-import Services from "../components/Service/Services";
-import WhyChooseUs from "../components/WhyChooseUs";
+import CustomerReviews from "./components/CustomerReviews/CustomerReviews";
+import MainImage from "./components/MainImage";
+import MainTitle from "../../components/MainTitle/MainTitle";
+import Services from "./components/Service/Services";
+import WhyChooseUs from "./components/WhyChooseUs";
 
-import clientImg from "../assest/client.svg";
-import imgR from "../assest/comaR.svg";
-import imgL from "../assest/comaL.svg";
+import clientImg from "../../assest/client.svg";
+import imgR from "../../assest/comaR.svg";
+import imgL from "../../assest/comaL.svg";
 
 const Home = () => {
   return (

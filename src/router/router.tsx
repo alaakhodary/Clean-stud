@@ -1,11 +1,7 @@
 import React, { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import Home from "../pages/Home";
-import Service from "../pages/Service/Service";
-import About from "../pages/About/About";
-import ContactUs from "../pages/ContactUs";
-import BookNow from "../pages/BookNow";
+import { HomePage, ServicePage, AboutPage, ContactUs, BookNow } from "../pages";
 
 import Loading from "../components/Loading";
 
@@ -13,9 +9,9 @@ const Router: React.FC = () => {
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
-        <Route index element={<Home />} />
-        <Route path="/service" element={<Service />} />
-        <Route path="/about" element={<About />} />
+        <Route index element={<HomePage />} />
+        <Route path="/service" element={<ServicePage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/book-now" element={<BookNow />} />
         <Route

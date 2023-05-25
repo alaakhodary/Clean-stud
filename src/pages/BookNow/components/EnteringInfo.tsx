@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import { Formik, Field, ErrorMessage, Form } from "formik";
 
-import GuidelinesForSelection from "./GuidelinesForSelection";
+import GuidelinesForSelection from "../../BookNow/components/GuidelinesForSelection";
 
 interface FormValues {
   name: string;
