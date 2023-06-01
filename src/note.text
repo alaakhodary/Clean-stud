@@ -11,19 +11,47 @@ import {
   faDollar,
 } from "@fortawesome/free-solid-svg-icons";
 import GuidelinesForSelection from "./GuidelinesForSelection";
+interface ISelectedServices {
+  serviceID: number;
+  subServices: number[];
+}
 
 const OptionsList: React.FC = () => {
-  const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<any[]>([]);
   const [showAllDetails, setShowAllDetails] = useState<number[]>([]);
+  const [selectedServices, setSelectedServices] = useState<ISelectedServices[]>(
+    [
+      {
+        serviceID: 1,
+        subServices: [2, 3, 4],
+      },
+      {
+        serviceID: 2,
+        subServices: [2, 3, 4],
+      },
+      {
+        serviceID: 3,
+        subServices: [2, 3, 4],
+      },
+    ]
+  );
 
   const handleToggleOption = (optionId: number) => {
     if (selectedOptions.includes(optionId)) {
-      setSelectedOptions(selectedOptions.filter((id) => id !== optionId));
+      setSelectedOptions(
+        selectedOptions.filter((service) => service.optionId !== optionId)
+      );
     } else {
-      setSelectedOptions([...selectedOptions, optionId]);
+      const selectedOption = mockOptionData.find(
+        (option) => option.id === optionId
+      );
+      if (selectedOption) {
+        setSelectedOptions([...selectedOptions, { serviceId: optionId }]);
+        console.log("Selected Option:", selectedOption);
+      }
     }
   };
-
+  console.log({ selectedOptions });
   const handleToggleDetails = (subOptionId: number) => {
     if (showAllDetails.includes(subOptionId)) {
       setShowAllDetails(showAllDetails.filter((id) => id !== subOptionId));
@@ -32,8 +60,56 @@ const OptionsList: React.FC = () => {
     }
   };
 
+  const handleChange = (subOptionId: number) => {
+   // must accept 2 paramerts(serviceId and subOptionId)
+    // for serviceId you have to find the service then you will have service object
+   // you have to do find subOptionId if included in the service you will remove it from the service object
+ //   if not added you have to add it to the service object(subServices)
+   // now you will have new service object, you have to filter the services by serviceId and add the new one
+      if (selectedOptions.includes(subOptionId)) {
+        setSelectedOptions(selectedOptions.filter((id) => id !== subOptionId));
+      } else {
+        let selectedSubOption;
+        for (const option of mockOptionData) {
+          selectedSubOption = option.subOptions.find(
+            (subOption) => subOption.id === subOptionId
+          );
+          if (selectedSubOption) {
+            break;
+          }
+        }
+        if (selectedSubOption) {
+          setSelectedOptions([...selectedOptions, subOptionId]);
+          console.log("Selected Sub-Option:", selectedSubOption);
+        }
+      }
+  };
+
+  const handleSubmit = (event: any) => {
+    event.preventDefault();
+    // const selectedData = {
+    //   selectedOptions: selectedOptions.map((optionId) => {
+    //     const selectedOption = mockOptionData.find(
+    //       (option) => option.id === optionId
+    //     );
+    //     const selectedSubOptions = selectedOption?.subOptions
+    //       .filter((subOption) => selectedOptions.includes(subOption.id))
+    //       .map((subOption) => ({
+    //         id: subOption.id,
+    //       }));
+    //     return {
+    //       id: optionId,
+    //       subOptions: selectedSubOptions,
+    //     };
+    //   }),
+    // };
+    // console.log("Selected Data:", selectedData);
+  };
+
+  const [selectedService, SetSelectedService] = useState<any[]>([{}]);
+
   return (
-    <Fragment>
+    <form onSubmit={handleSubmit}>
       <GuidelinesForSelection text="اختر الخدمات التي تحتاج تنظيفها من أي تصنيف تريده" />
       {mockOptionData.map((option) => (
         <div key={option.id} className="mb-4 rounded-2xl border-2">
@@ -88,7 +164,7 @@ const OptionsList: React.FC = () => {
                         name={`option-${subOption.id}`}
                         type="checkbox"
                         checked={selectedOptions.includes(subOption.id)}
-                        onChange={() => handleToggleOption(subOption.id)}
+                        onChange={() => handleChange(subOption.id)} // <-- Updated handleChange
                         className="ml-4 h-[30px] w-[30px] border checked:border-none checked:bg-[#00ADEE]"
                       />
                       <label htmlFor={`option-${subOption.id}`}>
@@ -172,7 +248,11 @@ const OptionsList: React.FC = () => {
           )}
         </div>
       ))}
-    </Fragment>
+
+      {/* <button onClick={handleSubmit} type="submit">
+        save
+      </button> */}
+    </form>
   );
 };
 

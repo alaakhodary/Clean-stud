@@ -2,6 +2,7 @@ interface IPropBtn {
   text: string;
   onClick?: (event: any) => void;
   variant?: "primary" | "secondary";
+  type?: "submit" | "button";
 }
 
 const Button = (props: IPropBtn) => {
@@ -11,7 +12,7 @@ const Button = (props: IPropBtn) => {
       : "w-36 px-6 h-14 border-solid border-2 rounded-full border-[#00ADEE] bg-[#00ADEE] text-white hover:bg-white hover:text-[#00ADEE] text-[19px]"
   }`;
   return (
-    <button onClick={props.onClick} className={buttonClasses}>
+    <button onClick={props.onClick} className={buttonClasses} type={props.type}>
       {props.text}
     </button>
   );

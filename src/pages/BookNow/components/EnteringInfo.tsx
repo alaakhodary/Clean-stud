@@ -16,11 +16,8 @@ const EnteringInfo = () => {
     values: FormValues,
     { setSubmitting, resetForm }: any
   ) => {
-    // Perform your API call or data processing here
-    // You can access the form values through the 'values' parameter
     console.log(values);
 
-    // After submitting, you can reset the form or perform other actions
     resetForm();
     setSubmitting(false);
   };
@@ -159,12 +156,6 @@ const EnteringInfo = () => {
                 />
               </div>
             </div>
-            {/* <button
-              type="submit"
-              className="rounded bg-blue-500 px-4 py-2 text-white"
-            >
-              إرسال
-            </button> */}
           </Form>
         )}
       </Formik>

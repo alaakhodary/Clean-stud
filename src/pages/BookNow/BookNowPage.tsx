@@ -2,7 +2,7 @@ import { Fragment } from "react";
 
 import imgLeft from "../../assest/imgTitleLeft.svg";
 
-import Process from "./components/CheckoutSteps";
+import CheckoutSteps from "./components/CheckoutSteps";
 import Summary from "./components/Summary";
 import Layout from "../../components/Layout";
 
@@ -17,7 +17,7 @@ const BookNow: React.FC = () => {
           </div>
           <div className="grid w-full grid-cols-12 gap-8">
             <div className="h-full w-[92%] rounded-[20px] shadow-shadowPrimary max-lg:col-span-12 max-lg:w-full lg:col-span-8">
-              <Process />
+              <CheckoutSteps />
             </div>
             <div className="h-fit rounded-[20px] bg-[#E5F7FD] max-lg:col-span-12 max-lg:w-[45%] lg:col-span-4">
               <Summary />

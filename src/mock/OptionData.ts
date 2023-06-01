@@ -1,12 +1,12 @@
 import imgSerOption from "../assest/imageOption.svg";
 
-export interface Option {
+export interface Service {
   id: number;
   label: string;
-  subOptions: SubOption[];
+  subServices: SubService[];
 }
 
-export interface SubOption {
+export interface SubService {
   id: number;
   label: string;
   img: string;
@@ -15,27 +15,11 @@ export interface SubOption {
   details: string[];
 }
 
-/* const selectedServices: Option[] = [
+export const services: Service[] = [
   {
     id: 1,
     label: "تنظيف المنازل",
-    subOptions: [
-      {
-        id: 11,
-        label: "Suboption 1",
-        price: 20,
-        quantity: 1,
-        details: ["Detail 1", "Detail 2", "Detail 3"],
-      },
-    ],
-  },
-]; */
-
-export const options: Option[] = [
-  {
-    id: 1,
-    label: "تنظيف المنازل",
-    subOptions: [
+    subServices: [
       {
         id: 11,
         label: "غرفة النوم",
@@ -57,7 +41,7 @@ export const options: Option[] = [
   {
     id: 2,
     label: "التنظيف التجاري",
-    subOptions: [
+    subServices: [
       {
         id: 21,
         label: "غرفة النوم",
