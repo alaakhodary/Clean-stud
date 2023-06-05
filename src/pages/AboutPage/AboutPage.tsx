@@ -7,8 +7,14 @@ import "./style.css";
 import woman from "../../assest/imgWoman.svg";
 import imgLeft from "../../assest/imgTitleLeft.svg";
 import Layout from "../../components/Layout";
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
+  const navigate = useNavigate();
+  const goToContantUs = () => {
+    navigate("/contact-us");
+  };
+
   return (
     <Fragment>
       <Layout>
@@ -27,7 +33,11 @@ const About = () => {
                 العربى زيادة عدد الفقرات كما تريد، النص لن يبدو مقسما ولا يحوي
                 أخطاء لغوية
               </p>
-              <Button text="تواصل معنا" variant="primary" />
+              <Button
+                text="تواصل معنا"
+                variant="primary"
+                onClick={() => goToContantUs()}
+              />
             </div>
             <div className="mt-6">
               <img

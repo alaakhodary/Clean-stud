@@ -1,12 +1,12 @@
 import imgSerOption from "../assest/imageOption.svg";
 
-export interface Service {
+export interface IService {
   id: number;
   label: string;
-  subServices: SubService[];
+  subServices: ISubService[];
 }
 
-export interface SubService {
+export interface ISubService {
   id: number;
   label: string;
   img: string;
@@ -15,7 +15,7 @@ export interface SubService {
   details: string[];
 }
 
-export const services: Service[] = [
+export const services: IService[] = [
   {
     id: 1,
     label: "تنظيف المنازل",

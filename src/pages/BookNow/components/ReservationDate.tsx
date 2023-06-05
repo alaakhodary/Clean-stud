@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import GuidelinesForSelection from "./GuidelinesForSelection";
@@ -15,7 +15,7 @@ const ReservationDate: React.FC = () => {
     selectedOption: "",
     selectedDateTime: "",
   };
-
+  const datePickerRef = useRef(null);
   const validationSchema = Yup.object({
     selectedOption: Yup.string().required("يرجى تحديد خيار"),
     selectedDateTime: Yup.string().required("يرجى تحديد التاريخ والوقت"),
@@ -24,9 +24,11 @@ const ReservationDate: React.FC = () => {
 
   const handleIconClick = () => {
     setShowPicker(true);
+    // @ts-ignore
+    datePickerRef?.current?.focus();
   };
   const handleBlur = () => {
-    setShowPicker(false);
+    // setShowPicker(false);
   };
   const handleSubmit = (values: FormValues, { resetForm }: any) => {
     console.log(values.selectedOption);
@@ -114,6 +116,7 @@ const ReservationDate: React.FC = () => {
                     placeholder="التاريخ والوقت"
                     onBlur={handleBlur}
                     readOnly={!showPicker}
+                    ref={datePickerRef}
                     className="w-[16rem] rounded-xl border-2 border-[#F2F2F2] px-3 py-3 outline-none"
                   />
                 )}

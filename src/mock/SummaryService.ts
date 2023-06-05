@@ -1,10 +1,10 @@
-interface summaryServiceData {
+interface ISummaryServiceData {
   services: string[];
   selectedItems: string[];
   totalPrice: number;
 }
 
-export const summaryServData: summaryServiceData = {
+export const summaryServData: ISummaryServiceData = {
   services: ["التنظيف التجاري"],
   selectedItems: ["غرفة النوم", "غرفة النوم"],
   totalPrice: 55,

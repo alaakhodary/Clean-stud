@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import "./style.css";
 
@@ -11,6 +11,8 @@ import Modal from "../Modal/Modal";
 
 import logo from "../../assest/logo.svg";
 
+import useAuth from "../../hooks/useAuth";
+
 interface NavigationLink {
   id: number;
   label: string;
@@ -18,12 +20,14 @@ interface NavigationLink {
 }
 
 const Header: React.FC = () => {
+  const { logout, token } = useAuth();
+
   const [showContent, setShowContent] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeItem, setActiveItem] = useState<number | null>(null);
 
   const handleActive = (itemId: number) => {
-    setActiveItem(itemId === activeItem ? null : itemId);
+    setActiveItem(itemId === activeItem ? itemId : null);
   };
 
   const openModal = () => {
@@ -36,6 +40,11 @@ const Header: React.FC = () => {
 
   const toggleContent = () => {
     setShowContent((prevShowContent) => !prevShowContent);
+  };
+
+  const navigate = useNavigate();
+  const goToBook = () => {
+    navigate("/book-now");
   };
 
   const navigationLinks: NavigationLink[] = [
@@ -89,8 +98,16 @@ const Header: React.FC = () => {
           </nav>
         </div>
         <div className="hidden font-bold lg:block">
-          <Button text="دخول" variant="primary" onClick={openModal} />
-          <Button text="احجز الآن" variant="secondary" onClick={openModal} />
+          {!token ? (
+            <Button text="دخول" variant="primary" onClick={openModal} />
+          ) : (
+            <Button text="خروج" variant="primary" onClick={logout} />
+          )}
+          <Button
+            text="احجز الآن"
+            variant="secondary"
+            onClick={() => goToBook()}
+          />
           <Modal isOpen={isOpen} onClose={closeModal}>
             <div className="flex items-center">
               <button onClick={closeModal} className="text-[#CCD2E3]">
@@ -133,11 +150,15 @@ const Header: React.FC = () => {
             ))}
             <div className="flex w-full gap-3 border-b-2 p-2 font-bold">
               <div className="header m-auto">
-                <Button text="دخول" variant="primary" onClick={openModal} />
+                {!token ? (
+                  <Button text="دخول" variant="primary" onClick={openModal} />
+                ) : (
+                  <Button text="خروج" variant="primary" onClick={logout} />
+                )}
                 <Button
                   text="احجز الآن"
                   variant="secondary"
-                  onClick={openModal}
+                  onClick={() => goToBook()}
                 />
                 <Modal isOpen={isOpen} onClose={closeModal}>
                   <div className="flex items-center">
