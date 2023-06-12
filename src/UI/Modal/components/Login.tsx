@@ -2,7 +2,6 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
-import { API_URL } from "../../../config/api";
 import { setAccessToken } from "../../../axiosConfig";
 import { useState } from "react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -25,9 +24,9 @@ const LoginPage = () => {
   const handleLogin = async (values: ILoginFormValues) => {
     try {
       setLoading(true);
-      const response = await axios.post('login', values);
+      const response = await axios.post("login", values);
       const { token } = response.data.data;
-      setAccessToken(token)
+      setAccessToken(token);
       // Update authentication state and store the token
       login(token);
       console.log("Login successful!");
