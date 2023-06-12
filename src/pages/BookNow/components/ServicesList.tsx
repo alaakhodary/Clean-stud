@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import { services as mockServiceList } from "../../../mock/OptionData";
 
@@ -12,10 +12,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import GuidelinesForSelection from "./GuidelinesForSelection";
 
-const ServicesList: React.FC = () => {
+const ServicesList = ({ handleCheck }: any) => {
   const [selectedMainService, setSelectedMainService] = useState<any[]>([]);
   const [showAllDetails, setShowAllDetails] = useState<number[]>([]);
   const [selectedSubServices, setSelectedSubServices] = useState<any[]>([]);
+
+  useEffect(() => {
+    handleCheck({
+      mainService: selectedMainService,
+      subService: selectedSubServices,
+    });
+  }, [selectedMainService, selectedSubServices]);
 
   // MainService
   const handleMainService = (serviceId: number) => {
@@ -35,17 +42,19 @@ const ServicesList: React.FC = () => {
   };
 
   // SubService
-  const handleChangeSubService = (serviceId: number, subOptionId: number) => {
+  const handleChangeSubService = (serviceId: number, subServiceId: number) => {
     const selectedService = mockServiceList.find(
       (serv) => serv.id === serviceId
     );
     const selectedSubService = selectedService?.subServices.find(
-      (serv) => serv.id === subOptionId
+      (serv) => serv.id === subServiceId
     );
-    if (selectedSubServices.includes(subOptionId)) {
-      setSelectedSubServices((prev) => prev.filter((id) => id !== subOptionId));
+    if (selectedSubServices.includes(subServiceId)) {
+      setSelectedSubServices((prev) =>
+        prev.filter((id) => id !== subServiceId)
+      );
     } else {
-      setSelectedSubServices((prev) => [...prev, subOptionId]);
+      setSelectedSubServices((prev) => [...prev, subServiceId]);
     }
     console.log({ serviceId, ...selectedSubService });
   };
@@ -106,7 +115,7 @@ const ServicesList: React.FC = () => {
                 <Fragment key={subServ.id}>
                   <div
                     className={`flex items-center justify-between rounded-xl border-2 p-4 ${
-                      selectedMainService.includes(subServ.id)
+                      selectedSubServices.includes(subServ.id)
                         ? "border-[#00ADEE]"
                         : ""
                     }`}

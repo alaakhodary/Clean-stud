@@ -1,17 +1,19 @@
+import axios from "axios";
 import { useState } from "react";
+import { API_URL } from "../config/api";
 
-export interface AuthProps {
+export interface IAuthProps {
   authorized: boolean;
   token: string;
   error: string;
   loading: boolean;
   login: (token: string) => void;
-  logout: () => void;
+  logout: () => Promise<any>;
   setError: (error: string) => void;
   setLoading: (loading: boolean) => void;
 }
 
-const useAuth = (): AuthProps => {
+const useAuth = (): IAuthProps => {
   const [authorized, setAuthorized] = useState<boolean>(false);
   const [token, setToken] = useState<string>(
     localStorage.getItem("token") || ""
@@ -26,11 +28,27 @@ const useAuth = (): AuthProps => {
     window.location.reload();
   };
 
-  const logout = (): void => {
+  const logout = async (): Promise<any> => {
+    const headers = {
+      Authorization: `${token}`,
+      "Content-Type": "application/json",
+      lang: "ar",
+    };
+    const body = {
+      fcm_token: token,
+    };
+    try {
+      await axios.post(`${API_URL}logout`, body, {
+        headers,
+      });
+      console.log("Logged out successfully");
+    } catch (error) {
+      setError("An error occurred during logout");
+    }
     localStorage.removeItem("token");
     setAuthorized(false);
     setToken("");
-    window.location.reload();
+    // window.location.reload();
   };
 
   return {

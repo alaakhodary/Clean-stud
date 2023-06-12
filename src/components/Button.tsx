@@ -1,5 +1,5 @@
 interface IPropBtn {
-  text: string;
+  text: string | React.ReactNode;
   onClick?: (event: any) => void;
   variant?: "primary" | "secondary";
   type?: "submit" | "button";

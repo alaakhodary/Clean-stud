@@ -27,7 +27,7 @@ const Service = () => {
     : mockserviceAvailabel;
 
   const navigate = useNavigate();
-  const goToBook = () => {
+  const goToBookNow = () => {
     navigate("/book-now");
   };
 
@@ -51,7 +51,7 @@ const Service = () => {
             <Button
               text="احجز الآن"
               variant="secondary"
-              onClick={() => goToBook()}
+              onClick={() => goToBookNow()}
             />
           </div>
           <div className="mt-6">

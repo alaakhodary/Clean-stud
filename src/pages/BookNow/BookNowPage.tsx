@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 import imgLeft from "../../assest/imgTitleLeft.svg";
 
@@ -7,6 +7,15 @@ import Summary from "./components/Summary";
 import Layout from "../../components/Layout";
 
 const BookNow: React.FC = () => {
+  const [data, setData] = useState(null);
+  const handleCheck = (selectedData: any) => {
+    setData(selectedData);
+  };
+
+  useEffect(() => {
+    console.log("data" + JSON.stringify(data));
+  }, [data]);
+
   return (
     <Fragment>
       <Layout>
@@ -17,7 +26,7 @@ const BookNow: React.FC = () => {
           </div>
           <div className="grid w-full grid-cols-12 gap-8">
             <div className="h-full w-[92%] rounded-[20px] shadow-shadowPrimary max-lg:col-span-12 max-lg:w-full lg:col-span-8">
-              <CheckoutSteps />
+              <CheckoutSteps handleCheck={handleCheck} />
             </div>
             <div className="h-fit rounded-[20px] bg-[#E5F7FD] max-lg:col-span-12 max-lg:w-[45%] lg:col-span-4">
               <Summary />

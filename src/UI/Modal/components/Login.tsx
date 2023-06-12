@@ -2,13 +2,13 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
-
+import { API_URL } from "../../../config/api";
 import { useState } from "react";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 
-interface LoginFormValues {
+interface ILoginFormValues {
   email: string;
   password: string;
 }
@@ -21,13 +21,11 @@ const LoginPage = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = async (values: LoginFormValues) => {
+  const handleLogin = async (values: ILoginFormValues) => {
+    const headers = { "Content-Type": "application/json", lang: "ar" };
     try {
       setLoading(true);
-      const response = await axios.post(
-        "https://student.valuxapps.com/api/login",
-        values
-      );
+      const response = await axios.post(`${API_URL}login`, values, { headers });
       const { token } = response.data.data;
       // Update authentication state and store the token
       login(token);
@@ -47,19 +45,24 @@ const LoginPage = () => {
     }
   };
 
+  const initialValues: ILoginFormValues = {
+    email: "",
+    password: "",
+  };
+
+  const validationSchema = Yup.object({
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    password: Yup.string()
+      .min(8, "Password must be at least 8 characters long")
+      .matches(regularExpression, "Invalid Password")
+      .required("Password is required"),
+  });
+
   return (
     <div className="mx-auto max-w-md">
       <Formik
-        initialValues={{ email: "", password: "" }}
-        validationSchema={Yup.object({
-          email: Yup.string()
-            .email("Invalid email")
-            .required("Email is required"),
-          password: Yup.string()
-            .min(8, "Password must be at least 8 characters long")
-            .matches(regularExpression, "Invalid Password")
-            .required("Password is required"),
-        })}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
         onSubmit={(values) => handleLogin(values)}
       >
         <Form>

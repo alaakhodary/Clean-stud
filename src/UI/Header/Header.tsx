@@ -21,13 +21,12 @@ interface NavigationLink {
 
 const Header: React.FC = () => {
   const { logout, token } = useAuth();
-
   const [showContent, setShowContent] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState<number | null>(null);
+  const [activeItemId, setActiveItem] = useState<number | null>(null);
 
   const handleActive = (itemId: number) => {
-    setActiveItem(itemId === activeItem ? itemId : null);
+    setActiveItem(itemId === activeItemId ? itemId : null);
   };
 
   const openModal = () => {
@@ -43,7 +42,7 @@ const Header: React.FC = () => {
   };
 
   const navigate = useNavigate();
-  const goToBook = () => {
+  const goToBookNow = () => {
     navigate("/book-now");
   };
 
@@ -87,7 +86,7 @@ const Header: React.FC = () => {
                 <li className="mr-16" key={item.id}>
                   <NavLink
                     to={item.href}
-                    className={`${activeItem === item.id ? "active" : ""}`}
+                    className={`${activeItemId === item.id ? "active" : ""}`}
                     onClick={() => handleActive(item.id)}
                   >
                     {item.label}
@@ -98,15 +97,21 @@ const Header: React.FC = () => {
           </nav>
         </div>
         <div className="hidden font-bold lg:block">
-          {!token ? (
-            <Button text="دخول" variant="primary" onClick={openModal} />
-          ) : (
-            <Button text="خروج" variant="primary" onClick={logout} />
-          )}
+          <Button
+            text={!token ? "دخول" : "خروج"}
+            variant="primary"
+            onClick={async () => {
+              if (token) {
+                await logout();
+              } else {
+                openModal();
+              }
+            }}
+          />
           <Button
             text="احجز الآن"
             variant="secondary"
-            onClick={() => goToBook()}
+            onClick={() => goToBookNow()}
           />
           <Modal isOpen={isOpen} onClose={closeModal}>
             <div className="flex items-center">
@@ -141,7 +146,7 @@ const Header: React.FC = () => {
               <li className="border-b-2 p-2 lg:border-none" key={item.id}>
                 <NavLink
                   to={item.href}
-                  className={`${activeItem === item.id ? "active" : ""}`}
+                  className={`${activeItemId === item.id ? "active" : ""}`}
                   onClick={() => handleActive(item.id)}
                 >
                   {item.label}
@@ -158,7 +163,7 @@ const Header: React.FC = () => {
                 <Button
                   text="احجز الآن"
                   variant="secondary"
-                  onClick={() => goToBook()}
+                  onClick={() => goToBookNow()}
                 />
                 <Modal isOpen={isOpen} onClose={closeModal}>
                   <div className="flex items-center">

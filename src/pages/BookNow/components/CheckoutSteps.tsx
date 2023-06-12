@@ -14,7 +14,7 @@ const steps = [
   { stepNumber: 3, label: "معلوماتك" },
 ];
 
-const StepComponent: React.FC = () => {
+const StepComponent = ({ handleCheck }: any) => {
   const [step, setStep] = useState(1);
 
   const handleStepChange = (nextStep: number) => {
@@ -27,7 +27,7 @@ const StepComponent: React.FC = () => {
   const getStepComponent = (): JSX.Element | null => {
     switch (step) {
       case 1:
-        return <OptionsList />;
+        return <OptionsList handleCheck={handleCheck} />;
       case 2:
         return <ReservationDate />;
       case 3:

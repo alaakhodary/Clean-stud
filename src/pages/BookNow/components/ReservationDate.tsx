@@ -28,7 +28,7 @@ const ReservationDate: React.FC = () => {
     datePickerRef?.current?.focus();
   };
   const handleBlur = () => {
-    // setShowPicker(false);
+    setShowPicker(false);
   };
   const handleSubmit = (values: FormValues, { resetForm }: any) => {
     console.log(values.selectedOption);
@@ -98,7 +98,6 @@ const ReservationDate: React.FC = () => {
             component="div"
             className="mt-1 px-4 text-red-500"
           />
-
           <div className="mt-5 px-4">
             <label
               htmlFor="datetime-input"

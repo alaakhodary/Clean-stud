@@ -13,8 +13,9 @@ import {
   faPhone,
   faLock,
 } from "@fortawesome/free-solid-svg-icons";
+import { API_URL } from "../../../config/api";
 
-interface SignupFormData {
+interface ISignupFormData {
   name: string;
   email: string;
   phone: string;
@@ -29,13 +30,10 @@ const SignupPage = () => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSignup = async (values: SignupFormData) => {
+  const handleSignup = async (values: ISignupFormData) => {
     try {
       setLoading(true);
-      const response = await axios.post(
-        "https://student.valuxapps.com/api/register",
-        values
-      );
+      const response = await axios.post(`${API_URL}register`, values);
       const { token } = response.data.data;
       // Update authentication state and store the token
       login(token);
@@ -59,26 +57,28 @@ const SignupPage = () => {
     }
   };
 
+  const initialValues: ISignupFormData = {
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+  };
+
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Name is required"),
+    email: Yup.string().email("Invalid email").required("Email is required"),
+    phone: Yup.string().required("Phone number is required"),
+    password: Yup.string()
+      .min(8, "Password must be at least 8 characters long")
+      .matches(regularExpression, "Invalid Password")
+      .required("Password is required"),
+  });
+
   return (
     <div className="mx-auto max-w-md">
       <Formik
-        initialValues={{
-          name: "",
-          email: "",
-          phone: "",
-          password: "",
-        }}
-        validationSchema={Yup.object({
-          name: Yup.string().required("Name is required"),
-          email: Yup.string()
-            .email("Invalid email")
-            .required("Email is required"),
-          phone: Yup.string().required("Phone number is required"),
-          password: Yup.string()
-            .min(8, "Password must be at least 8 characters long")
-            .matches(regularExpression, "Invalid Password")
-            .required("Password is required"),
-        })}
+        initialValues={initialValues}
+        validationSchema={validationSchema}
         onSubmit={(values) => handleSignup(values)}
       >
         <Form className="mt-[33px]">
@@ -146,7 +146,7 @@ const SignupPage = () => {
               placeholder="رقم الجوال"
             />
             <ErrorMessage
-              name="phoneNumber"
+              name="phone"
               component="div"
               className="flex justify-start text-red-500 max-lg:text-sm"
             />

@@ -1,25 +1,17 @@
-import React, { createContext, useContext } from "react";
-import useAuth, { AuthProps } from "../hooks/useAuth";
+import React, { createContext } from "react";
+import useAuth, { IAuthProps } from "../hooks/useAuth";
 
-interface AuthContextType extends AuthProps {}
+interface AuthContextType extends IAuthProps {}
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
-type AuthProviderProps = {
+type IAuthProviderProps = {
   children: React.ReactNode;
 };
 
-const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+const AuthProvider: React.FC<IAuthProviderProps> = ({ children }) => {
   const auth = useAuth();
   return <AuthContext.Provider value={auth}>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;
-
-export const useAuthContext = (): AuthContextType => {
-  const authContext = useContext(AuthContext);
-  if (!authContext) {
-    throw new Error("useAuthContext must be used within an AuthProvider");
-  }
-  return authContext;
-};
