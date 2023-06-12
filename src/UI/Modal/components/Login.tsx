@@ -16,6 +16,21 @@ interface ILoginFormValues {
 const regularExpression =
   /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
 
+interface ILogin {
+  status: boolean;
+  message: string;
+  data: {
+    id: number;
+    name: string;
+    email: string;
+    phone: string;
+    image: string;
+    points: number;
+    credit: number;
+    token: string;
+  };
+}
+
 const LoginPage = () => {
   const { error, loading, login, setError, setLoading } = useAuth();
 
@@ -24,7 +39,7 @@ const LoginPage = () => {
   const handleLogin = async (values: ILoginFormValues) => {
     try {
       setLoading(true);
-      const response = await axios.post("login", values);
+      const response = await axios.post<ILogin>("login", values);
       const { token } = response.data.data;
       setAccessToken(token);
       // Update authentication state and store the token

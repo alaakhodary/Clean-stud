@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { API_URL } from "../config/api";
+import { setAccessToken } from "../axiosConfig";
 
 export interface IAuthProps {
   authorized: boolean;
@@ -29,26 +29,19 @@ const useAuth = (): IAuthProps => {
   };
 
   const logout = async (): Promise<any> => {
-    const headers = {
-      Authorization: `${token}`,
-      "Content-Type": "application/json",
-      lang: "ar",
-    };
     const body = {
       fcm_token: token,
     };
     try {
-      await axios.post(`${API_URL}logout`, body, {
-        headers,
-      });
+      await axios.post("logout", body);
       console.log("Logged out successfully");
+      setAccessToken("");
     } catch (error) {
       setError("An error occurred during logout");
     }
     localStorage.removeItem("token");
     setAuthorized(false);
     setToken("");
-    // window.location.reload();
   };
 
   return {

@@ -13,7 +13,7 @@ import {
   faPhone,
   faLock,
 } from "@fortawesome/free-solid-svg-icons";
-import { API_URL } from "../../../config/api";
+import { setAccessToken } from "../../../axiosConfig";
 
 interface ISignupFormData {
   name: string;
@@ -33,8 +33,9 @@ const SignupPage = () => {
   const handleSignup = async (values: ISignupFormData) => {
     try {
       setLoading(true);
-      const response = await axios.post(`${API_URL}register`, values);
+      const response = await axios.post("register", values);
       const { token } = response.data.data;
+      setAccessToken(token);
       // Update authentication state and store the token
       login(token);
       console.log("Signup successful!");
