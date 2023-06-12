@@ -1,4 +1,5 @@
 import Router from "./router/router";
+import "./axiosConfig";
 
 function App() {
   return (
